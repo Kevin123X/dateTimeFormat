@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间格式化</title>
+</head>
+
+<body>
+    时间：<input type="datetime-local" name="" id="date" placeholder="选择格式化时间">
+    格式：<input type="text" name="" id="format" placeholder="输入时间格式">
+    <br>
+    <br>
+    例：{y}-{m}-{d} {h}:{i}:{s},
+    <br>
+    {y}/{m}/{d}
+    <br>
+    {h}:{i}:{s}
+    <br>
+    {y}-{m}-{d} 星期 {a}
+    <br>
+    {y}/{m}/{d}
+    <br>
+    <br>
+    <button onclick="format()">确认格式化</button>
+    <br>
+    <br>
+    结果：<div id="res">--/--</div>
+</body>
+<script src="./dateTimeFormat.js"></script>
+<script>
+    function format() {
+        let date = document.getElementById('date').value
+        let format = document.getElementById('format').value
+        if (date && format) {
+            let formatDate = timeFormat(date, format)
+            document.getElementById('res').innerHTML = formatDate
+        } else {
+            alert('请输入时间及格式')
+        }
+    }
+    // console.log(timeFormat(new Date())) //print 2019-12-16 11:10:31
+    // console.log(timeFormat(new Date(), '{y}-{m}-{d}')) //print 2019-12-16
+    // console.log(timeFormat(new Date(), '{y}/{m}/{d}')) //print 2019/12/16
+    // console.log(timeFormat(new Date(), '{y}')) //print 2019
+    // console.log(timeFormat(new Date(), '{h}:{i}:{s}')) //print 11:14:31
+    // console.log(timeFormat(new Date(), '{y}-{m}-{d} 星期 {a}')) //print 2019-12-16 星期 一
+    // console.log(timeFormat(new Date('2019/12/11'))) //print 2019-12-11 
+    // console.log(timeFormat('2019-12-11 12:00:00')) //print 2019-12-11 12:00:00
+    // console.log(timeFormat(new Date().getTime())) //print 2019-12-16 11:20:17
+</script>
+
+</html>
